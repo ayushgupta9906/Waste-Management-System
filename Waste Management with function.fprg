@@ -1,0 +1,294 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="ELCOT"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2021-05-11 12:35:52 PM"/>
+        <attribute name="created" value="RUxDT1Q7TEVOT1ZPOzIwMjEtMDEtMDc7MDY6Mzk6NTQgUE07MjEyNg=="/>
+        <attribute name="edited" value="RUxDT1Q7TEVOT1ZPOzIwMjEtMDItMDM7MDk6MjM6NDEgUE07MjtFTENPVDtMRU5PVk87MjAyMS0wMS0wNzswNjozOTo1NCBQTTtXYXN0ZSBNYW5hZ2VtZW50LmZwcmc7NjUxNA=="/>
+        <attribute name="edited" value="RUxDT1Q7TEVOT1ZPOzIwMjEtMDItMDY7MDk6MDA6MzMgUE07Mjg2OzIzMzM="/>
+        <attribute name="edited" value="TW9oYW47TVNJOzIwMjEtMDUtMTE7MTI6MzU6NTIgUE07MjsyMTE1"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="areas, month, numofdays, pastday, presentday, b, c, d, e, f, daysd, daysp, dayse, totaldaysd, totaldaysp, totaldayse, vtotalnumofhouses, costofdeg, costofplast, costofelect, choice, continuezero, continueone, continuetwo" type="Integer" array="False" size=""/>
+            <declare name="totaldegwaste, totalplastwaste, totalelectwaste, degwastepercent, plastwastepercent, electwastepercent, totalearning" type="Real" array="False" size=""/>
+            <declare name="numofhouses, s" type="Integer" array="True" size="100"/>
+            <declare name="degwaste, plastwaste, electwaste, degwasteperhouse, plastwasteperhouse, electwasteperhouse, totalwasteperhouse, avgdegwaste, avgplastwaste, avgelectwaste, totalwasteqfour, costdegwasteperhouse, costplastwasteperhouse, costelectwasteperhouse, costperhouse, lowest" type="Real" array="True" size="1000"/>
+            <declare name="g" type="String" array="False" size=""/>
+            <output expression="&quot;Enter num of areas:&quot;" newline="True"/>
+            <input variable="areas"/>
+            <call expression="areas(numofhouses,areas)"/>
+            <do expression="continuetwo=1">
+                <assign variable="month" expression="12"/>
+                <assign variable="continueone" expression="1"/>
+                <while expression="month&gt;0&amp;&amp;continueone=1">
+                    <output expression="&quot;Enter number of days in this month: &quot;" newline="True"/>
+                    <input variable="numofdays"/>
+                    <assign variable="presentday" expression="0"/>
+                    <assign variable="pastday" expression="0"/>
+                    <assign variable="d" expression="0"/>
+                    <assign variable="e" expression="0"/>
+                    <assign variable="f" expression="0"/>
+                    <assign variable="vtotalnumofhouses" expression="0"/>
+                    <for variable="b" start="0" end="areas-1" direction="inc" step="1">
+                        <assign variable="vtotalnumofhouses" expression="vtotalnumofhouses+numofhouses[b]"/>
+                    </for>
+                    <do expression="numofdays!=presentday">
+                        <assign variable="presentday" expression="presentday+1"/>
+                        <output expression="&quot;Day &quot;&amp;presentday" newline="True"/>
+                        <if expression="presentday=pastday+1">
+                            <then>
+                                <assign variable="g" expression="&quot;degradable&quot;"/>
+                                <call expression="dailywaste(degwaste,numofhouses,areas,d,g)"/>
+                                <assign variable="d" expression="d+vtotalnumofhouses"/>
+                            </then>
+                            <else>
+                                <if expression="presentday=pastday+2">
+                                    <then>
+                                        <assign variable="g" expression="&quot;plastic&quot;"/>
+                                        <call expression="dailywaste(plastwaste,numofhouses,areas,e,g)"/>
+                                        <assign variable="e" expression="e+vtotalnumofhouses"/>
+                                    </then>
+                                    <else>
+                                        <if expression="presentday=pastday+3">
+                                            <then>
+                                                <assign variable="g" expression="&quot;electronic&quot;"/>
+                                                <call expression="dailywaste(electwaste,numofhouses,areas,f,g)"/>
+                                                <assign variable="f" expression="f+vtotalnumofhouses"/>
+                                                <assign variable="pastday" expression="presentday"/>
+                                            </then>
+                                            <else/>
+                                        </if>
+                                    </else>
+                                </if>
+                            </else>
+                        </if>
+                    </do>
+                    <output expression="&quot;You have collected monthly data  :)&quot;" newline="True"/>
+                    <if expression="numofdays=29">
+                        <then>
+                            <assign variable="daysd" expression="10"/>
+                            <assign variable="daysp" expression="10"/>
+                            <assign variable="dayse" expression="9"/>
+                        </then>
+                        <else>
+                            <assign variable="daysd" expression="(numofdays/3)+(numofdays%3)"/>
+                            <assign variable="daysp" expression="numofdays/3"/>
+                            <assign variable="dayse" expression="numofdays/3"/>
+                        </else>
+                    </if>
+                    <assign variable="costofdeg" expression="5"/>
+                    <assign variable="costofplast" expression="10"/>
+                    <assign variable="costofelect" expression="15"/>
+                    <assign variable="totaldaysd" expression="0"/>
+                    <call expression="basictwo(vtotalnumofhouses,totaldaysd,degwaste,degwasteperhouse,costdegwasteperhouse,costofdeg,daysd)"/>
+                    <assign variable="totaldaysp" expression="0"/>
+                    <call expression="basictwo(vtotalnumofhouses,totaldaysp,plastwaste,plastwasteperhouse,costplastwasteperhouse,costofplast,daysp)"/>
+                    <assign variable="totaldayse" expression="0"/>
+                    <call expression="basictwo(vtotalnumofhouses,totaldayse,electwaste,electwasteperhouse,costelectwasteperhouse,costofelect,dayse)"/>
+                    <comment text="Common loop of choice 1,4"/>
+                    <for variable="b" start="0" end="vtotalnumofhouses-1" direction="inc" step="1">
+                        <assign variable="totalwasteperhouse[b]" expression="degwasteperhouse[b]+plastwasteperhouse[b]+electwasteperhouse[b]"/>
+                        <assign variable="costperhouse[b]" expression="costdegwasteperhouse[b]+costplastwasteperhouse[b]+costelectwasteperhouse[b]"/>
+                    </for>
+                    <comment text="Common loop of choice 2,3,4,5"/>
+                    <assign variable="e" expression="0"/>
+                    <call expression="twothreefourfive(areas,numofhouses,totalwasteqfour,avgdegwaste,degwasteperhouse,e)"/>
+                    <assign variable="e" expression="1"/>
+                    <call expression="twothreefourfive(areas,numofhouses,totalwasteqfour,avgplastwaste,plastwasteperhouse,e)"/>
+                    <assign variable="e" expression="2"/>
+                    <call expression="twothreefourfive(areas,numofhouses,totalwasteqfour,avgelectwaste,electwasteperhouse,e)"/>
+                    <comment text="Common loop of choice 2,3,5"/>
+                    <assign variable="s[0]" expression="0"/>
+                    <assign variable="lowest[0]" expression="totalwasteperhouse[0]"/>
+                    <call expression="twothreefive(totalwasteperhouse,costperhouse,vtotalnumofhouses,s,lowest)"/>
+                    <do expression="continuezero=1">
+                        <output expression="&quot;You have collected monthly data&quot;&amp;tochar(13)&amp;&#13;&#10;&quot;Enter you choice:&quot;&amp;tochar(13)&amp;&#13;&#10;&quot;1 for statistics&quot;&amp;tochar(13)&amp;&#13;&#10;&quot;2 to know house and area number of house which gave less quantity of waste&quot;&amp;tochar(13)&amp;&#13;&#10;&quot;3 to know processing fee of each house and monthly earning for municipality&quot;&amp;tochar(13)&amp;&#13;&#10;&quot;4 to know percentage of waste from each category&quot;&amp;tochar(13)&amp;&#13;&#10;&quot;5 to know monthly expenses of a particular house&quot;" newline="True"/>
+                        <input variable="choice"/>
+                        <if expression="choice=1">
+                            <then>
+                                <output expression="&quot;Statistics:Average waste collection of this month&quot;" newline="True"/>
+                                <for variable="b" start="0" end="areas-1" direction="inc" step="1">
+                                    <output expression="&quot;Area &quot;&amp;b+1" newline="True"/>
+                                    <output expression="&quot;degradable waste :   &quot;&amp;avgdegwaste[b]&amp;&quot; kg&quot;" newline="True"/>
+                                    <output expression="&quot;plastic waste :   &quot;&amp;avgplastwaste[b]&amp;&quot; kg&quot;" newline="True"/>
+                                    <output expression="&quot;electronic waste :   &quot;&amp;avgelectwaste[b]&amp;&quot; kg&quot;" newline="True"/>
+                                    <output expression="&quot;All wastes :   &quot;&amp;(avgdegwaste[b]+avgplastwaste[b]+avgelectwaste[b])/3&amp;&quot; kg&quot;" newline="True"/>
+                                </for>
+                            </then>
+                            <else>
+                                <if expression="choice=2">
+                                    <then>
+                                        <output expression="&quot;The house number &quot;&amp;s[0]+1&amp;&quot; gave &quot;&amp;lowest[0]&amp;&quot; kg of waste which is least of all&quot;" newline="True"/>
+                                        <output expression="&quot;So the municipality decides to refund the processing fee of that house&quot;" newline="True"/>
+                                    </then>
+                                    <else>
+                                        <if expression="choice=3">
+                                            <then>
+                                                <assign variable="d" expression="0"/>
+                                                <assign variable="totalearning" expression="0"/>
+                                                <output expression="&quot;Processing fee of waste per house &quot;" newline="True"/>
+                                                <for variable="b" start="0" end="areas-1" direction="inc" step="1">
+                                                    <output expression="&quot;Area &quot;&amp;b+1" newline="True"/>
+                                                    <for variable="c" start="0" end="numofhouses[b]-1" direction="inc" step="1">
+                                                        <output expression="&quot;House number &quot;&amp;d+1&amp;&quot; :   &quot;&amp;costperhouse[d]&amp;&quot; rupees&quot;" newline="True"/>
+                                                        <assign variable="totalearning" expression="totalearning+costperhouse[d]"/>
+                                                        <assign variable="d" expression="d+1"/>
+                                                    </for>
+                                                </for>
+                                                <output expression="&quot;Total earning for municipality from all areas in this month&quot;&amp;&quot; :   &quot;&amp;totalearning&amp;&quot; rupees&quot;" newline="True"/>
+                                            </then>
+                                            <else>
+                                                <if expression="choice=4">
+                                                    <then>
+                                                        <assign variable="degwastepercent" expression="totalwasteqfour[0]*100/(totalwasteqfour[0]+totalwasteqfour[1]+totalwasteqfour[2])"/>
+                                                        <assign variable="plastwastepercent" expression="totalwasteqfour[1]*100/(totalwasteqfour[0]+totalwasteqfour[1]+totalwasteqfour[2])"/>
+                                                        <assign variable="electwastepercent" expression="totalwasteqfour[2]*100/(totalwasteqfour[0]+totalwasteqfour[1]+totalwasteqfour[2])"/>
+                                                        <output expression="&quot;Percentage of wastes in all areas&quot;&amp;tochar(13)&amp;&#13;&#10;&quot;Degradable waste  :   &quot;&amp;degwastepercent&amp;&quot;%&quot;&amp;tochar(13)&amp;&#13;&#10;&quot;Plastic waste     :   &quot;&amp;plastwastepercent&amp;&quot;%&quot;&amp;tochar(13)&amp;&#13;&#10;&quot;Electronic waste  :   &quot;&amp;electwastepercent&amp;&quot;%&quot;" newline="True"/>
+                                                    </then>
+                                                    <else>
+                                                        <if expression="choice=5">
+                                                            <then>
+                                                                <output expression="&quot;To know a particular house expenses&quot;" newline="True"/>
+                                                                <output expression="&quot;Enter House num :&quot;" newline="True"/>
+                                                                <input variable="b"/>
+                                                                <if expression="b&lt;=vtotalnumofhouses">
+                                                                    <then>
+                                                                        <output expression="&quot;Expenses of house number &quot;&amp;b&amp;&quot; :   &quot;&amp;costperhouse[b-1]&amp;&quot; rupees&quot;" newline="True"/>
+                                                                    </then>
+                                                                    <else>
+                                                                        <output expression="&quot;Invalid House number !&quot;" newline="True"/>
+                                                                    </else>
+                                                                </if>
+                                                            </then>
+                                                            <else>
+                                                                <output expression="&quot;Invalid choice !&quot;" newline="True"/>
+                                                            </else>
+                                                        </if>
+                                                    </else>
+                                                </if>
+                                            </else>
+                                        </if>
+                                    </else>
+                                </if>
+                            </else>
+                        </if>
+                        <output expression="&quot;Do you want to choose another option: &quot;&amp;tochar(13)&amp;&#13;&#10;&quot;Enter 1 to continue&quot;&amp;tochar(13)&amp;&#13;&#10;&quot;Enter 0 to stop&quot;" newline="True"/>
+                        <input variable="continuezero"/>
+                    </do>
+                    <output expression="&quot;You have completed a month   :)&quot;&amp;tochar(13)&amp;&#13;&#10;&quot;Do you want to continue: &quot;&amp;tochar(13)&amp;&#13;&#10;&quot;Enter 1 to continue&quot;&amp;tochar(13)&amp;&#13;&#10;&quot;Enter 0 to stop&quot;" newline="True"/>
+                    <input variable="continueone"/>
+                    <assign variable="month" expression="month-1"/>
+                </while>
+                <output expression="&quot;You have completed a year   :) &quot;&amp;tochar(13)&amp;&#13;&#10;&quot;Do you want to continue:&quot;&amp;tochar(13)&amp;&#13;&#10;&quot;Enter 1 to continue&quot;&amp;tochar(13)&amp;&#13;&#10;&quot;Enter 0 to stop&quot;" newline="True"/>
+                <input variable="continuetwo"/>
+            </do>
+            <output expression="&quot;Thanks for using our program   :)&quot;" newline="True"/>
+        </body>
+    </function>
+    <function name="areas" type="None" variable="">
+        <parameters>
+            <parameter name="numofhouses" type="Integer" array="True"/>
+            <parameter name="areas" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <declare name="a" type="Integer" array="False" size=""/>
+            <for variable="a" start="0" end="areas-1" direction="inc" step="1">
+                <output expression="&quot;Enter number of houses in area &quot;&amp;a+1&amp;&quot; : &quot;" newline="True"/>
+                <input variable="numofhouses[a]"/>
+            </for>
+        </body>
+    </function>
+    <function name="basictwo" type="None" variable="">
+        <parameters>
+            <parameter name="vtotalnumofhouses" type="Integer" array="False"/>
+            <parameter name="totaldays" type="Integer" array="False"/>
+            <parameter name="waste" type="Real" array="True"/>
+            <parameter name="wasteperhouse" type="Real" array="True"/>
+            <parameter name="costwasteperhouse" type="Real" array="True"/>
+            <parameter name="cost" type="Integer" array="False"/>
+            <parameter name="days" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <declare name="b, c, vwaste" type="Integer" array="False" size=""/>
+            <assign variable="totaldays" expression="days*vtotalnumofhouses"/>
+            <for variable="b" start="0" end="vtotalnumofhouses-1" direction="inc" step="1">
+                <assign variable="vwaste" expression="0"/>
+                <for variable="c" start="0+b" end="totaldays-1" direction="inc" step="vtotalnumofhouses">
+                    <assign variable="vwaste" expression="vwaste+waste[c]"/>
+                </for>
+                <assign variable="wasteperhouse[b]" expression="vwaste"/>
+                <assign variable="costwasteperhouse[b]" expression="vwaste*cost"/>
+            </for>
+        </body>
+    </function>
+    <function name="dailywaste" type="None" variable="">
+        <parameters>
+            <parameter name="waste" type="Real" array="True"/>
+            <parameter name="numofhouses" type="Integer" array="True"/>
+            <parameter name="areas" type="Integer" array="False"/>
+            <parameter name="d" type="Integer" array="False"/>
+            <parameter name="g" type="String" array="False"/>
+        </parameters>
+        <body>
+            <declare name="b, c" type="Integer" array="False" size=""/>
+            <for variable="b" start="0" end="areas-1" direction="inc" step="1">
+                <output expression="&quot;Area &quot;&amp;b+1" newline="True"/>
+                <for variable="c" start="0" end="numofhouses[b]-1" direction="inc" step="1">
+                    <output expression="&quot;Enter weight of &quot;&amp;g&amp;&quot; waste in house &quot;&amp;c+1&amp;&quot; of this area: &quot;" newline="True"/>
+                    <input variable="waste[d]"/>
+                    <assign variable="d" expression="d+1"/>
+                </for>
+            </for>
+        </body>
+    </function>
+    <function name="twothreefive" type="None" variable="">
+        <parameters>
+            <parameter name="totalwasteperhouse" type="Real" array="True"/>
+            <parameter name="costperhouse" type="Real" array="True"/>
+            <parameter name="vtotalnumofhouses" type="Integer" array="False"/>
+            <parameter name="s" type="Integer" array="True"/>
+            <parameter name="lowest" type="Real" array="True"/>
+        </parameters>
+        <body>
+            <declare name="b" type="Integer" array="False" size=""/>
+            <for variable="b" start="1" end="vtotalnumofhouses-1" direction="inc" step="1">
+                <if expression="lowest[0]&gt;totalwasteperhouse[b]">
+                    <then>
+                        <assign variable="lowest[0]" expression="totalwasteperhouse[b]"/>
+                        <assign variable="s[0]" expression="b"/>
+                    </then>
+                    <else/>
+                </if>
+            </for>
+            <assign variable="costperhouse[s[0]]" expression="0"/>
+        </body>
+    </function>
+    <function name="twothreefourfive" type="None" variable="">
+        <parameters>
+            <parameter name="areas" type="Integer" array="False"/>
+            <parameter name="numofhouses" type="Integer" array="True"/>
+            <parameter name="totalwasteqfour" type="Real" array="True"/>
+            <parameter name="avgwaste" type="Real" array="True"/>
+            <parameter name="wasteperhouse" type="Real" array="True"/>
+            <parameter name="e" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <declare name="b, c, d, totalwaste" type="Integer" array="False" size=""/>
+            <assign variable="d" expression="0"/>
+            <assign variable="totalwasteqfour[e]" expression="0"/>
+            <for variable="b" start="0" end="areas-1" direction="inc" step="1">
+                <assign variable="totalwaste" expression="0"/>
+                <for variable="c" start="0" end="numofhouses[b]-1" direction="inc" step="1">
+                    <assign variable="totalwaste" expression="totalwaste+wasteperhouse[d]"/>
+                    <assign variable="d" expression="d+1"/>
+                </for>
+                <assign variable="totalwasteqfour[e]" expression="totalwasteqfour[e]+totalwaste"/>
+                <assign variable="avgwaste[b]" expression="totalwaste/numofhouses[b]"/>
+            </for>
+        </body>
+    </function>
+</flowgorithm>

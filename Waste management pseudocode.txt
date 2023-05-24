@@ -1,0 +1,207 @@
+Function Main
+    Declare Integer areas, month, numofdays, pastday, presentday, b, c, d, e, f, daysd, daysp, dayse, totaldaysd, totaldaysp, totaldayse, vtotalnumofhouses, costofdeg, costofplast, costofelect, choice, continuezero, continueone, continuetwo
+    Declare Real totaldegwaste, totalplastwaste, totalelectwaste, degwastepercent, plastwastepercent, electwastepercent, totalearning
+    Declare Integer Array numofhouses[100], s[100]
+    Declare Real Array degwaste[1000], plastwaste[1000], electwaste[1000], degwasteperhouse[1000], plastwasteperhouse[1000], electwasteperhouse[1000], totalwasteperhouse[1000], avgdegwaste[1000], avgplastwaste[1000], avgelectwaste[1000], totalwasteqfour[1000], costdegwasteperhouse[1000], costplastwasteperhouse[1000], costelectwasteperhouse[1000], costperhouse[1000], lowest[1000]
+    
+    Output "Enter num of areas:"
+    Input areas
+    Call areas(numofhouses,areas)
+    Loop
+        Assign month = 12
+        Assign continueone = 1
+        While month>0&&continueone=1
+            Output "Enter number of days in this month: "
+            Input numofdays
+            Assign presentday = 0
+            Assign pastday = 0
+            Assign d = 0
+            Assign e = 0
+            Assign f = 0
+            Loop
+                Assign presentday = presentday+1
+                Output "Day "&presentday
+                If presentday=pastday+1
+                    Call dailywaste(degwaste,numofhouses,areas,d)
+                False:
+                    If presentday=pastday+2
+                        Call dailywaste(plastwaste,numofhouses,areas,e)
+                    False:
+                        If presentday=pastday+3
+                            Call dailywaste(electwaste,numofhouses,areas,f)
+                            Assign pastday = presentday
+                        End
+                    End
+                End
+            Do numofdays!=presentday
+            Output "You have collected monthly data  :)"
+            If numofdays=29
+                Assign daysd = 10
+                Assign daysp = 10
+                Assign dayse = 9
+            False:
+                Assign daysd = (numofdays/3)+(numofdays%3)
+                Assign daysp = numofdays/3
+                Assign dayse = numofdays/3
+            End
+            Assign vtotalnumofhouses = 0
+            For b = 0 to areas-1
+                Assign vtotalnumofhouses = vtotalnumofhouses+numofhouses[b]
+            End
+            Assign costofdeg = 5
+            Assign costofplast = 10
+            Assign costofelect = 15
+            Assign totaldaysd = 0
+            Call basictwo(vtotalnumofhouses,totaldaysd,degwaste,degwasteperhouse,costdegwasteperhouse,costofdeg,daysd)
+            Assign totaldaysp = 0
+            Call basictwo(vtotalnumofhouses,totaldaysp,plastwaste,plastwasteperhouse,costplastwasteperhouse,costofplast,daysp)
+            Assign totaldayse = 0
+            Call basictwo(vtotalnumofhouses,totaldayse,electwaste,electwasteperhouse,costelectwasteperhouse,costofelect,dayse)
+            
+            ... Common loop of choice 1,4
+            For b = 0 to vtotalnumofhouses-1
+                Assign totalwasteperhouse[b] = degwasteperhouse[b]+plastwasteperhouse[b]+electwasteperhouse[b]
+                Assign costperhouse[b] = costdegwasteperhouse[b]+costplastwasteperhouse[b]+costelectwasteperhouse[b]
+            End
+            
+            ... Common loop of choice 2,3,4,5
+            Assign e = 0
+            Call twothreefourfive(areas,numofhouses,totalwasteqfour,avgdegwaste,degwasteperhouse,e)
+            Assign e = 1
+            Call twothreefourfive(areas,numofhouses,totalwasteqfour,avgplastwaste,plastwasteperhouse,e)
+            Assign e = 2
+            Call twothreefourfive(areas,numofhouses,totalwasteqfour,avgelectwaste,electwasteperhouse,e)
+            
+            ... Common loop of choice 2,3,5
+            Assign s[0] = 0
+            Assign lowest[0] = totalwasteperhouse[0]
+            Call twothreefive(totalwasteperhouse,costperhouse,vtotalnumofhouses,s,lowest)
+            Loop
+                Output "You have collected monthly data"&tochar(13)&"Enter you choice:"&tochar(13)&"1 for statistics"&tochar(13)&"2 to know house and area number of house which gave less quantity of waste"&tochar(13)&"3 to know processing fee of each house and monthly earning for municipality"&tochar(13)&"4 to know percentage of waste from each category"&tochar(13)&"5 to know monthly expenses of a particular house"
+                Input choice
+                If choice=1
+                    Output "Statistics:Average waste collection of this month"
+                    For b = 0 to areas-1
+                        Output "Area "&b+1
+                        Output "degradable waste :   "&avgdegwaste[b]&" kg"
+                        Output "plastic waste :   "&avgplastwaste[b]&" kg"
+                        Output "electronic waste :   "&avgelectwaste[b]&" kg"
+                        Output "All wastes :   "&(avgdegwaste[b]+avgplastwaste[b]+avgelectwaste[b])/3&" kg"
+                    End
+                False:
+                    If choice=2
+                        Output "The house number "&s[0]+1&" gave "&lowest[0]&" kg of waste which is least of all"
+                        Output "So the municipality decides to refund the processing fee of that house"
+                    False:
+                        If choice=3
+                            Assign d = 0
+                            Assign totalearning = 0
+                            Output "Processing fee of waste per house "
+                            For b = 0 to areas-1
+                                Output "Area "&b+1
+                                For c = 0 to numofhouses[b]-1
+                                    Output "House number "&d+1&" :   "&costperhouse[d]&" rupees"
+                                    Assign totalearning = totalearning+costperhouse[d]
+                                    Assign d = d+1
+                                End
+                            End
+                            Output "Total earning for municipality from all areas in this month"&" :   "&totalearning&" rupees"
+                        False:
+                            If choice=4
+                                Assign degwastepercent = totalwasteqfour[0]*100/(totalwasteqfour[0]+totalwasteqfour[1]+totalwasteqfour[2])
+                                Assign plastwastepercent = totalwasteqfour[1]*100/(totalwasteqfour[0]+totalwasteqfour[1]+totalwasteqfour[2])
+                                Assign electwastepercent = totalwasteqfour[2]*100/(totalwasteqfour[0]+totalwasteqfour[1]+totalwasteqfour[2])
+                                Output "Percentage of wastes in all areas"&tochar(13)&"Degradable waste  :   "&degwastepercent&"%"&tochar(13)&"Plastic waste     :   "&plastwastepercent&"%"&tochar(13)&"Electronic waste  :   "&electwastepercent&"%"
+                            False:
+                                If choice=5
+                                    Output "To know a particular house expenses"
+                                    Output "Enter House num :"
+                                    Input b
+                                    If b<=vtotalnumofhouses
+                                        Output "Expenses of house number "&b&" :   "&costperhouse[b-1]&" rupees"
+                                    False:
+                                        Output "Invalid House number !"
+                                    End
+                                False:
+                                    Output "Invalid choice !"
+                                End
+                            End
+                        End
+                    End
+                End
+                Output "Do you want to choose another option: "&tochar(13)&"Enter 1 to continue"&tochar(13)&"Enter 0 to stop"
+                Input continuezero
+            Do continuezero=1
+            Output "You have completed a month   :)"&tochar(13)&"Do you want to continue: "&tochar(13)&"Enter 1 to continue"&tochar(13)&"Enter 0 to stop"
+            Input continueone
+            Assign month = month-1
+        End
+        Output "You have completed a year   :) "&tochar(13)&"Do you want to continue:"&tochar(13)&"Enter 1 to continue"&tochar(13)&"Enter 0 to stop"
+        Input continuetwo
+    Do continuetwo=1
+    Output "Thanks for using our program   :)"
+End
+
+Function areas (Integer Array numofhouses, Integer areas)
+    Declare Integer a
+    
+    For a = 0 to areas-1
+        Output "Enter number of houses in area "&a+1&" : "
+        Input numofhouses[a]
+    End
+End
+
+Function basictwo (Integer vtotalnumofhouses, Integer totaldays, Real Array waste, Real Array wasteperhouse, Real Array costwasteperhouse, Integer cost, Integer days)
+    Declare Integer b, c, vwaste
+    
+    Assign totaldays = days*vtotalnumofhouses
+    For b = 0 to vtotalnumofhouses-1
+        Assign vwaste = 0
+        For c = 0+b to totaldays-1 step vtotalnumofhouses
+            Assign vwaste = vwaste+waste[c]
+        End
+        Assign wasteperhouse[b] = vwaste
+        Assign costwasteperhouse[b] = vwaste*cost
+    End
+End
+
+Function dailywaste (Real Array waste, Integer Array numofhouses, Integer areas, Integer d)
+    Declare Integer b, c
+    
+    For b = 0 to areas-1
+        Output "Area "&b+1
+        For c = 0 to numofhouses[b]-1
+            Output "Enter weight of degradable waste in house "&c+1&" of this area: "
+            Input waste[d]
+            Assign d = d+1
+        End
+    End
+End
+
+Function twothreefive (Real Array totalwasteperhouse, Real Array costperhouse, Integer vtotalnumofhouses, Integer Array s, Real Array lowest)
+    Declare Integer b
+    
+    For b = 1 to vtotalnumofhouses-1
+        If lowest[0]>totalwasteperhouse[b]
+            Assign lowest[0] = totalwasteperhouse[b]
+            Assign s[0] = b
+        End
+    End
+    Assign costperhouse[s[0]] = 0
+End
+
+Function twothreefourfive (Integer areas, Integer Array numofhouses, Real Array totalwasteqfour, Real Array avgwaste, Real Array wasteperhouse, Integer e)
+    Declare Integer b, c, d, totalwaste
+    
+    Assign d = 0
+    Assign totalwasteqfour[e] = 0
+    For b = 0 to areas-1
+        Assign totalwaste = 0
+        For c = 0 to numofhouses[b]-1
+            Assign totalwaste = totalwaste+wasteperhouse[d]
+            Assign d = d+1
+        End
+        Assign totalwasteqfour[e] = totalwasteqfour[e]+totalwaste
+        Assign avgwaste[b] = totalwaste/numofhouses[b]
+    End
+End

@@ -1,0 +1,414 @@
+
+Month 1  : 
+Enter num of areas : 2
+Enter number of houses in area 1 : 2
+Enter number of houses in area 2 : 2
+Enter number of days in this month: 30
+
+Day 1
+Enter the weight of degradable waste collected in house number 1 :5
+
+Enter the weight of degradable waste collected in house number 2 :5
+
+Enter the weight of degradable waste collected in house number 3 :5
+
+Enter the weight of degradable waste collected in house number 4 :1
+
+Day 2
+Enter the weight of plastic waste collected in house number 1 :5
+
+Enter the weight of plastic waste collected in house number 2 :5
+
+Enter the weight of plastic waste collected in house number 3 :5
+
+Enter the weight of plastic waste collected in house number 4 :1
+
+Day 3
+Enter the weight of electronic waste collected in house number 1 :5
+
+Enter the weight of electronic waste collected in house number 2 :5
+
+Enter the weight of electronic waste collected in house number 3 :5
+
+Enter the weight of electronic waste collected in house number 4 :1
+
+Day 4
+Enter the weight of degradable waste collected in house number 1 :5
+
+Enter the weight of degradable waste collected in house number 2 :5
+
+Enter the weight of degradable waste collected in house number 3 :5
+
+Enter the weight of degradable waste collected in house number 4 :1
+
+Day 5
+Enter the weight of plastic waste collected in house number 1 :5
+
+Enter the weight of plastic waste collected in house number 2 :5
+
+Enter the weight of plastic waste collected in house number 3 :5
+
+Enter the weight of plastic waste collected in house number 4 :1
+
+Day 6
+Enter the weight of electronic waste collected in house number 1 :5
+
+Enter the weight of electronic waste collected in house number 2 :5
+
+Enter the weight of electronic waste collected in house number 3 :5
+
+Enter the weight of electronic waste collected in house number 4 :1
+
+Day 7
+Enter the weight of degradable waste collected in house number 1 :5
+
+Enter the weight of degradable waste collected in house number 2 :5
+
+Enter the weight of degradable waste collected in house number 3 :5
+
+Enter the weight of degradable waste collected in house number 4 :1
+
+Day 8
+Enter the weight of plastic waste collected in house number 1 :5
+
+Enter the weight of plastic waste collected in house number 2 :5
+
+Enter the weight of plastic waste collected in house number 3 :5
+
+Enter the weight of plastic waste collected in house number 4 :1
+
+Day 9
+Enter the weight of electronic waste collected in house number 1 :5
+
+Enter the weight of electronic waste collected in house number 2 :5
+
+Enter the weight of electronic waste collected in house number 3 :5
+
+Enter the weight of electronic waste collected in house number 4 :1
+
+Day 10
+Enter the weight of degradable waste collected in house number 1 :5
+
+Enter the weight of degradable waste collected in house number 2 :5
+
+Enter the weight of degradable waste collected in house number 3 :5
+
+Enter the weight of degradable waste collected in house number 4 :1
+
+Day 11
+Enter the weight of plastic waste collected in house number 1 :5
+
+Enter the weight of plastic waste collected in house number 2 :5
+
+Enter the weight of plastic waste collected in house number 3 :5
+
+Enter the weight of plastic waste collected in house number 4 :1
+
+Day 12
+Enter the weight of electronic waste collected in house number 1 :5
+
+Enter the weight of electronic waste collected in house number 2 :5
+
+Enter the weight of electronic waste collected in house number 3 :5
+
+Enter the weight of electronic waste collected in house number 4 :1
+
+Day 13
+Enter the weight of degradable waste collected in house number 1 :5
+
+Enter the weight of degradable waste collected in house number 2 :5
+
+Enter the weight of degradable waste collected in house number 3 :5
+
+Enter the weight of degradable waste collected in house number 4 :1
+
+Day 14
+Enter the weight of plastic waste collected in house number 1 :5
+
+Enter the weight of plastic waste collected in house number 2 :5
+
+Enter the weight of plastic waste collected in house number 3 :5
+
+Enter the weight of plastic waste collected in house number 4 :1
+
+Day 15
+Enter the weight of electronic waste collected in house number 1 :5
+
+Enter the weight of electronic waste collected in house number 2 :5
+
+Enter the weight of electronic waste collected in house number 3 :5
+
+Enter the weight of electronic waste collected in house number 4 :1
+
+Day 16
+Enter the weight of degradable waste collected in house number 1 :5
+
+Enter the weight of degradable waste collected in house number 2 :5
+
+Enter the weight of degradable waste collected in house number 3 :5
+
+Enter the weight of degradable waste collected in house number 4 :1
+
+Day 17
+Enter the weight of plastic waste collected in house number 1 :5
+
+Enter the weight of plastic waste collected in house number 2 :5
+
+Enter the weight of plastic waste collected in house number 3 :5
+
+Enter the weight of plastic waste collected in house number 4 :5 1
+
+Day 18
+Enter the weight of electronic waste collected in house number 1 :5
+
+Enter the weight of electronic waste collected in house number 2 :5
+
+Enter the weight of electronic waste collected in house number 3 :5
+
+Enter the weight of electronic waste collected in house number 4 :5 1
+
+Day 19
+Enter the weight of degradable waste collected in house number 1 :5
+
+Enter the weight of degradable waste collected in house number 2 :5
+
+Enter the weight of degradable waste collected in house number 3 :5
+
+Enter the weight of degradable waste collected in house number 4 :1
+
+Day 20
+Enter the weight of plastic waste collected in house number 1 :5
+
+Enter the weight of plastic waste collected in house number 2 :5
+
+Enter the weight of plastic waste collected in house number 3 :5
+
+Enter the weight of plastic waste collected in house number 4 :1
+
+Day 21
+Enter the weight of electronic waste collected in house number 1 :5
+
+Enter the weight of electronic waste collected in house number 2 :5
+
+Enter the weight of electronic waste collected in house number 3 :5
+
+Enter the weight of electronic waste collected in house number 4 :1
+
+Day 22
+Enter the weight of degradable waste collected in house number 1 :5
+
+Enter the weight of degradable waste collected in house number 2 :5
+
+Enter the weight of degradable waste collected in house number 3 :5
+
+Enter the weight of degradable waste collected in house number 4 :1
+
+Day 23
+Enter the weight of plastic waste collected in house number 1 :5
+
+Enter the weight of plastic waste collected in house number 2 :5
+
+Enter the weight of plastic waste collected in house number 3 :5
+
+Enter the weight of plastic waste collected in house number 4 :1
+
+Day 24
+Enter the weight of electronic waste collected in house number 1 :5
+
+Enter the weight of electronic waste collected in house number 2 :5
+
+Enter the weight of electronic waste collected in house number 3 :5
+
+Enter the weight of electronic waste collected in house number 4 :1
+
+Day 25
+Enter the weight of degradable waste collected in house number 1 :5
+
+Enter the weight of degradable waste collected in house number 2 :5
+
+Enter the weight of degradable waste collected in house number 3 :5
+
+Enter the weight of degradable waste collected in house number 4 :1
+
+Day 26
+Enter the weight of plastic waste collected in house number 1 :5
+
+Enter the weight of plastic waste collected in house number 2 :5
+
+Enter the weight of plastic waste collected in house number 3 :5
+
+Enter the weight of plastic waste collected in house number 4 :1
+
+Day 27
+Enter the weight of electronic waste collected in house number 1 :5
+
+Enter the weight of electronic waste collected in house number 2 :5
+
+Enter the weight of electronic waste collected in house number 3 :5
+
+Enter the weight of electronic waste collected in house number 4 :1
+
+Day 28
+Enter the weight of degradable waste collected in house number 1 :5
+
+Enter the weight of degradable waste collected in house number 2 :5
+
+Enter the weight of degradable waste collected in house number 3 :5
+
+Enter the weight of degradable waste collected in house number 4 :1
+
+Day 29
+Enter the weight of plastic waste collected in house number 1 :5
+
+Enter the weight of plastic waste collected in house number 2 :5
+
+Enter the weight of plastic waste collected in house number 3 :5
+
+Enter the weight of plastic waste collected in house number 4 :1
+
+Day 30
+Enter the weight of electronic waste collected in house number 1 :5
+
+Enter the weight of electronic waste collected in house number 2 :5
+
+Enter the weight of electronic waste collected in house number 3 :5
+
+Enter the weight of electronic waste collected in house number 4 :1
+
+You have collected monthly data  
+
+Enter you choice:
+1 for statistics
+2 to know house number of house which gave less quantity of waste
+3 to know processing fee of each house and monthly earning for municipality
+4 to know percentage of waste from each category
+5 to know monthly expenses of a particular house
+Choice input: 1
+
+Statistics : Average waste collection of this month
+Area 1
+degradable waste :  50.00 kg
+plastic waste    :  50.00 kg
+electronic waste :  50.00 kg
+Total waste      :  50.00 kg
+Area 2
+degradable waste :  30.00 kg
+plastic waste    :  30.00 kg
+electronic waste :  30.00 kg
+Total waste      :  30.00 kg
+
+Do you want to choose another option: 
+Enter 1 to continue
+      0 to stop
+Option input : 1
+
+
+Enter you choice:
+1 for statistics
+2 to know house number of house which gave less quantity of waste
+3 to know processing fee of each house and monthly earning for municipality
+4 to know percentage of waste from each category
+5 to know monthly expenses of a particular house
+Choice input: 2
+
+The house number 4 gave 30.00 kg of waste which is least of all
+So the municipality decided to refund the processing fee of that house
+
+
+Do you want to choose another option: 
+Enter 1 to continue
+      0 to stop
+Option input : 1
+
+
+Enter you choice:
+1 for statistics
+2 to know house number of house which gave less quantity of waste
+3 to know processing fee of each house and monthly earning for municipality
+4 to know percentage of waste from each category
+5 to know monthly expenses of a particular house
+Choice input: 3
+
+Processing fee of waste per house 
+Area 1
+House number 1 : 1500.00 rupees
+House number 2 : 1500.00 rupees
+Area 2
+House number 3 : 1500.00 rupees
+House number 4 : 0.00 rupees
+Total earning for municipality from all areas in this month: 4500.00 rupees
+
+
+Do you want to choose another option: 
+Enter 1 to continue
+      0 to stop
+Option input : 1
+
+
+Enter you choice:
+1 for statistics
+2 to know house number of house which gave less quantity of waste
+3 to know processing fee of each house and monthly earning for municipality
+4 to know percentage of waste from each category
+5 to know monthly expenses of a particular house
+Choice input: 4
+
+Percentage of wastes in all areas
+Degradable waste  : 33.33 %
+Plastic waste     : 33.33 %
+Electronic waste  : 33.33 %
+
+Do you want to choose another option: 
+Enter 1 to continue
+      0 to stop
+Option input : 1
+
+
+Enter you choice:
+1 for statistics
+2 to know house number of house which gave less quantity of waste
+3 to know processing fee of each house and monthly earning for municipality
+4 to know percentage of waste from each category
+5 to know monthly expenses of a particular house
+Choice input: 5
+
+To know a particular house expenses
+Enter House number :1
+Expenses of house number 1 : 1500.00 rupees
+
+Do you want to choose another option: 
+Enter 1 to continue
+      0 to stop
+Option input : 1
+
+
+Enter you choice:
+1 for statistics
+2 to know house number of house which gave less quantity of waste
+3 to know processing fee of each house and monthly earning for municipality
+4 to know percentage of waste from each category
+5 to know monthly expenses of a particular house
+Choice input: 5
+
+To know a particular house expenses
+Enter House number :4
+Expenses of house number 4 : 0.00 rupees
+
+Do you want to choose another option: 
+Enter 1 to continue
+      0 to stop
+Option input : 0
+
+End of the month !
+Do you want to start with next month :
+Enter 1 to continue
+      0 to stop
+Option input : 0
+
+End of the year ! 
+Do you want to start with next year :
+Enter 1 to continue 
+ 0 to stop
+Option input : 0
+
+Thanks for using our program  !
